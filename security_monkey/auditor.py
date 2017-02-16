@@ -365,7 +365,7 @@ class Auditor(object):
         return auditor_setting
 
     def _check_cross_account(self, src_account_number, dest_item, location):
-        account = Account.query.filter(Account.number == src_account_number).first()
+        account = Account.query.filter(Account.identifier == src_account_number).first()
         account_name = None
         if account is not None:
             account_name = account.name
@@ -393,7 +393,7 @@ class Auditor(object):
             return None
 
         account = Account.query.filter(Account.name == source_item.account).first()
-        source_item_account_number = account.number
+        source_item_account_number = account.identifier
 
         if source_item_account_number == dest_arn.account_number:
             return None

@@ -107,7 +107,7 @@ def add_account(number, third_party, name, s3_name, active, notes, role_name='Se
     unless edit is True, in which case, override the existing account. Returns True
     if an action is taken, False otherwise. '''
     query = Account.query
-    query = query.filter(Account.number == number)
+    query = query.filter(Account.identifier == number)
     if query.count():
         if not edit:
             return False
@@ -118,7 +118,7 @@ def add_account(number, third_party, name, s3_name, active, notes, role_name='Se
     account = Account()
     account.name = name
     account.s3_name = s3_name
-    account.number = number
+    account.identifier = number
     account.role_name = role_name
     account.notes = notes
     account.active = active

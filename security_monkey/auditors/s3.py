@@ -131,7 +131,7 @@ class S3Auditor(Auditor):
             print("This is an odd arn: {}".format(arn))
             return
 
-        account = Account.query.filter(Account.number==arn.account_number).first()
+        account = Account.query.filter(Account.identifier==arn.account_number).first()
         if account:
             # Friendly Account.
             if not account.third_party:
