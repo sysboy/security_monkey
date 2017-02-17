@@ -51,8 +51,8 @@ def connect(account_name, connection_type, **args):
         account = Account.query.filter(Account.name == account_name).first()
         sts = boto3.client('sts')
         role_name = 'SecurityMonkey'
-        if account.role_name and account.role_name != '':
-            role_name = account.role_name
+        if account.getCustom("role_name") and account.getCustom("role_name") != '':
+            role_name = account.getCustom("role_name")
         role = sts.assume_role(RoleArn='arn:aws:iam::' + account.identifier +
                                ':role/' + role_name, RoleSessionName='secmonkey')
 
