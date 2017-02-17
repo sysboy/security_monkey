@@ -46,7 +46,7 @@ class AuditorType(type):
                         found = True
                         break
                 if not found:
-                    app.logger.info("Registering auditor {} {}.{}".format(cls.index, cls.__module__, cls.__name__))
+                    app.logger.debug("Registering auditor {} {}.{}".format(cls.index, cls.__module__, cls.__name__))
                     auditor_registry[cls.index].append(cls)
 
 class Auditor(object):
