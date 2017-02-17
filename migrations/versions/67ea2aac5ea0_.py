@@ -1,14 +1,14 @@
 """Adding itemauditscores table
 
 Revision ID: 67ea2aac5ea0
-Revises: d08d0b37788a
+Revises: 55725cc4bf25
 Create Date: 2016-01-26 21:43:10.398048
 
 """
 
 # revision identifiers, used by Alembic.
 revision = '67ea2aac5ea0'
-down_revision = '1c847ae1209a'
+down_revision = '55725cc4bf25'
 
 from alembic import op
 import sqlalchemy as sa

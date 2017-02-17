@@ -1,7 +1,7 @@
 """Adding accountpatternauditscore table
 
 Revision ID: 6d2354fb841c
-Revises: 79a8df8d4dfa
+Revises: 67ea2aac5ea0
 Create Date: 2016-06-21 19:58:12.949279
 
 """
