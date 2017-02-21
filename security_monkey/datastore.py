@@ -663,8 +663,6 @@ class Datastore(object):
             db.session.refresh(item)
         return item
 
-    def get_technology_methods(self):
-        pass
 
 def store_exception(source, location, exception, ttl=None):
     """
