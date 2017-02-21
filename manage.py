@@ -500,7 +500,7 @@ def delete_account(name):
 # We are locking down the allowed intervals here to 15 minutes, 1 hour, 12 hours, 24
 # hours or one week because too many different intervals could result in too many
 # scheduler threads, impacting performance.
-@manager.option('-i', '--interval', dest='interval', type=int, default=1440, choices= [15, 60, 720, 1440, 10080])
+@manager.option('-i', '--interval', dest='interval', type=int, default=60, choices= [15, 60, 720, 1440, 10080])
 def add_watcher_config(tech_name, disabled, interval):
     from security_monkey.datastore import WatcherConfig
     from security_monkey.watcher import watcher_registry

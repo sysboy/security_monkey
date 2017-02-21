@@ -42,7 +42,7 @@ class Watcher(object):
     i_am_plural = 'Abstracts'
     rate_limit_delay = 0
     ignore_list = []
-    interval = 1440    #in minutes
+    interval = 60    #in minutes
     active = True
     account_type = 'AWS'
     __metaclass__ = WatcherType
