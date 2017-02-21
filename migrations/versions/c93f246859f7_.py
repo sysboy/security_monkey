@@ -1,14 +1,14 @@
 """Add watcher config table
 
 Revision ID: c93f246859f7
-Revises: 55725cc4bf25
+Revises: 6d2354fb841c
 Create Date: 2016-09-29 16:13:29.946116
 
 """
 
 # revision identifiers, used by Alembic.
 revision = 'c93f246859f7'
-down_revision = '55725cc4bf25'
+down_revision = '6d2354fb841c'
 
 from alembic import op
 import sqlalchemy as sa
