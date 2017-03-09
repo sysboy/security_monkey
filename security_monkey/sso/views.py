@@ -124,7 +124,7 @@ class Ping(Resource):
         user = setup_user(
             profile.get('email'),
             profile.get('groups', profile.get('googleGroups', [])),
-            current_app.config.get('PING_DEFAULT_ROLE'))
+            current_app.config.get('PING_DEFAULT_ROLE', 'View'))
 
         # Tell Flask-Principal the identity changed
         identity_changed.send(current_app._get_current_object(), identity=Identity(user.id))
@@ -205,7 +205,7 @@ class Google(Resource):
         r = requests.get(people_api_url, headers=headers)
         profile = r.json()
 
-        user = setup_user(profile.get('email'), profile.get('groups', []), current_app.config.get('GOOGLE_DEFAULT_ROLE'))
+        user = setup_user(profile.get('email'), profile.get('groups', []), current_app.config.get('GOOGLE_DEFAULT_ROLE', 'View'))
 
         # Tell Flask-Principal the identity changed
         identity_changed.send(current_app._get_current_object(), identity=Identity(user.id))

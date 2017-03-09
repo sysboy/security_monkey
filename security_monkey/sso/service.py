@@ -88,14 +88,14 @@ def on_identity_loaded(sender, identity):
     g.user = user
 
 
-def setup_user(email, groups, default_role):
+def setup_user(email, groups=None, default_role='View'):
     from security_monkey import app, db
 
     user = User.query.filter(User.email == email).first()
     if user:
         return user
 
-    role = default_role or 'View'
+    role = default_role
     groups = groups or []
     if groups:
         if app.config.get('ADMIN_GROUP') and app.config.get('ADMIN_GROUP') in groups:
