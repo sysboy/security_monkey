@@ -107,9 +107,6 @@ class Ping(Resource):
 
         # validate your token based on the key it was signed with
         try:
-            current_app.logger.debug(id_token)
-            current_app.logger.debug(secret)
-            current_app.logger.debug(algo)
             jwt.decode(id_token, secret.decode('utf-8'), algorithms=[algo], audience=client_id)
         except jwt.DecodeError:
             return dict(message='Token is invalid'), 403
@@ -124,7 +121,10 @@ class Ping(Resource):
         r = requests.get(user_api_url, params=user_params)
         profile = r.json()
 
-        user = setup_user(profile.get('email'), profile.get('groups', []), current_app.config.get('PING_DEFAULT_ROLE'))
+        user = setup_user(
+            profile.get('email'),
+            profile.get('groups', profile.get('googleGroups', [])),
+            current_app.config.get('PING_DEFAULT_ROLE'))
 
         # Tell Flask-Principal the identity changed
         identity_changed.send(current_app._get_current_object(), identity=Identity(user.id))
